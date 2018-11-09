@@ -1,11 +1,10 @@
 package com.cogni.rbc.test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.Test;
 
 import com.cogni.rbc.service.FruitService;
 
@@ -17,8 +16,12 @@ import com.cogni.rbc.service.FruitService;
  */
 public class TestFruitService {
 
+	/**
+	 * Testcase test the scenario where all fruits in basket (list) are valid
+	 * fruits.
+	 */
 	@Test
-	public void testgetTotalCostNormal() {
+	public void testgetTotalCost() {
 
 		FruitService service = new FruitService();
 		List<String> basket = new ArrayList<>();
@@ -31,9 +34,12 @@ public class TestFruitService {
 
 		float expected = 100f;
 
-		assertEquals(expected, service.getTotalCost(basket));
+		assertEquals(expected, service.getTotalCost(basket), 0);
 	}
 
+	/**
+	 * Testcase test the scenario where basket (list) is null
+	 */
 	@Test
 	public void testgetTotalCostNull() {
 
@@ -41,9 +47,12 @@ public class TestFruitService {
 		List<String> basket = null;
 		float expected = 0.0f;
 
-		assertEquals(expected, service.getTotalCost(basket));
+		assertEquals(expected, service.getTotalCost(basket), 0);
 	}
 
+	/**
+	 * Testcase test the scenario where basket (list) is empty
+	 */
 	@Test
 	public void testgetTotalCostEmpty() {
 
@@ -51,9 +60,12 @@ public class TestFruitService {
 		List<String> basket = new ArrayList<>();
 		float expected = 0.0f;
 
-		assertEquals(expected, service.getTotalCost(basket));
+		assertEquals(expected, service.getTotalCost(basket), 0);
 	}
 
+	/**
+	 * Testcase test the scenario where basket (list) has a invalid fruit.
+	 */
 	@Test
 	public void testgetTotalCostInvalidFruit() {
 
@@ -61,8 +73,8 @@ public class TestFruitService {
 		List<String> basket = new ArrayList<>();
 		basket.add("Apples");
 		basket.add("LEMONS");
-		basket.add("Orages");
+		basket.add("BALL");
 		float expected = 25f;
-		assertEquals(expected, service.getTotalCost(basket));
+		assertEquals(expected, service.getTotalCost(basket), 0);
 	}
 }

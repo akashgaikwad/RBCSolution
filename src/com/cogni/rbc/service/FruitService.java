@@ -30,14 +30,16 @@ public class FruitService {
 
 		float totalCost = 0.0f;
 
-		if (null != basket) {
+		if (null == basket) {
+			System.err.println("List is null");
+			return totalCost;
+		}
 
-			for (String fruit : basket) {
-				try {
-					totalCost += Fruits.valueOf(fruit.toUpperCase()).getPrice();
-				} catch (IllegalArgumentException e) {
-					System.err.println(e.getMessage() + ": Invalid Fruit in Basket");
-				}
+		for (String fruit : basket) {
+			try {
+				totalCost += Fruits.valueOf(fruit.toUpperCase()).getPrice();
+			} catch (IllegalArgumentException e) {
+				System.err.println(e.getMessage() + ": Invalid Fruit in Basket");
 			}
 		}
 

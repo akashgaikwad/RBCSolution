@@ -13,10 +13,6 @@ public enum Fruits {
 
 	private float price;
 
-	private Fruits() {
-
-	}
-
 	private Fruits(float price) {
 		this.price = price;
 	}
